@@ -11,7 +11,7 @@ from oauth2client import client
 from oauth2client import tools
 from oauth2client.file import Storage
 
-
+from CleanABody import CleanABody
 
 try:
     import argparse
@@ -153,7 +153,10 @@ def GetService():
 	return service 
 
 
+def GetEmailIDs(service, email):
+  messages = ListMessagesMatchingQuery(service, "me", "from:{}".format(email))
+  return [x['id'] for x in messages]
 
-
-
-
+def GetEmailBody (service, email_id):
+  body = GetMessageBody(service, "me", email_id)
+  return CleanABody(body)
