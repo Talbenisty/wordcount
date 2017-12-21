@@ -18,6 +18,7 @@ def DownloadEmails(email):
         CreateEmailTextFile.write("\n".join(body))
         print "email downloaded"
     
-    print "full download complete"
+    print "finished emails for {}".format(email)
 
-DownloadEmails("andria.coyne@gmail.com")
+# Put emails to download here
+DownloadEmails("tal.benisty@gmail.com")
