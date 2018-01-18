@@ -1,3 +1,6 @@
+import re
+
+
 def RemoveBreaklines(body):
      return body.replace('=\r\n','')
 
@@ -15,6 +18,23 @@ def CleanABody(body):
 
     BodyWithoutBreaklines = RemoveBreaklines(body)
     BodyInLines = ConvertBodyToLines(BodyWithoutBreaklines)
-    BodyWithoutQuotedText = RemoveQuotes(BodyInLines)
+    BodyWithoutQuotedText = remove_quote(BodyInLines)
 
     return BodyWithoutQuotedText
+
+ def is_timestamp(line):
+  	return re.match('^On (.*)> wrote:$', line) == None
+
+def remove_quote(body):
+	quoteless_body = [] 
+	for line in body:
+		if is_timestamp(line):
+			break
+		else: 
+			quoteless_body.append(line)
+
+	return quoteless_body
+
+
+
+  	
