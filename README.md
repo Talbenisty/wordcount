@@ -1,7 +1,11 @@
-# wordcount
+
+# Wordcount
 Counting words
 
+# Installation
+pip install -r requirements.txt
+
 # @TODO
+- Figure out why all emails come back empty
 - Research language processing
-- remove On -Date- -so and so- wrote:
 - detect and remove signatures

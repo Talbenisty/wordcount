@@ -22,8 +22,8 @@ def CleanABody(body):
 
     return BodyWithoutQuotedText
 
- def is_timestamp(line):
-  	return re.match('^On (.*)> wrote:$', line) == None
+def is_timestamp(line):
+ 	return re.match('^On (.*)> wrote:$', line) == None
 
 def remove_quote(body):
 	quoteless_body = [] 
