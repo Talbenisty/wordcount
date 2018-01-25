@@ -1,4 +1,5 @@
 import re
+import pdb
 
 
 def RemoveBreaklines(body):
@@ -23,7 +24,7 @@ def CleanABody(body):
     return BodyWithoutQuotedText
 
 def is_timestamp(line):
- 	return re.match('^On (.*)> wrote:$', line) == None
+ 	return re.match('^On (.*)> wrote:$', line) != None
 
 def remove_quote(body):
 	quoteless_body = [] 
@@ -33,7 +34,7 @@ def remove_quote(body):
 		else: 
 			quoteless_body.append(line)
 
-	return quoteless_body
+	return "".join(quoteless_body)
 
 
 

@@ -1,4 +1,6 @@
 import os
+import pdb
+
 
 from Gmail import GetEmailBody
 from Gmail import GetService
@@ -9,8 +11,12 @@ service = GetService()
 
 def DownloadEmail(service, email_id, dirname):
     body = GetEmailBody(service, email_id)
-    CreateEmailTextFile = open("{}/{}.txt".format(dirname, email_id), "wb")
-    CreateEmailTextFile.write("\n".join(body))
+    if body != "":
+        CreateEmailTextFile = open("{}/{}.txt".format(dirname, email_id), "wb")
+
+        pdb.set_trace()
+
+        CreateEmailTextFile.write("\n".join(body))
     print "email downloaded"
 
 
@@ -26,7 +32,7 @@ def DownloadEmails(email):
     print "finished emails for {}".format(email)
 
 # Put emails to download here
-#DownloadEmails("sarahroseklearman@gmail.com")
+DownloadEmails("sheila.shahmirza@collectivehealth.com")
 
 
-DownloadEmail(service, GetEmailIDs(service, "sarahroseklearman@gmail.com")[0], "./")
+##DownloadEmail(service, GetEmailIDs(service, "yourilicht@gmail.com")[0], "./")

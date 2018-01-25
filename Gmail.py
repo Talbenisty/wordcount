@@ -2,6 +2,8 @@ from __future__ import print_function
 import httplib2
 import os
 
+import pdb
+
 import base64
 import email
 from apiclient import errors
@@ -125,17 +127,18 @@ def GetMessageBody(service, user_id, msg_id):
             msg_str = base64.urlsafe_b64decode(message['raw'].encode('ASCII'))
             mime_msg = email.message_from_string(msg_str)
             messageMainType = mime_msg.get_content_maintype()
+
             if messageMainType == 'multipart':
                     for part in mime_msg.get_payload():
                             if part.get_content_maintype() == 'text':
                                     return part.get_payload()
-                    return ""
+                    return "heyguys"
             elif messageMainType == 'text':
                     return mime_msg.get_payload()
     except errors.HttpError, error:
-            pass ##print 'An error occurred: %s' % error
+            print('An error occurred: %s'.format(error))
     
-
+  
 
 
 
@@ -159,4 +162,5 @@ def GetEmailIDs(service, email):
 
 def GetEmailBody (service, email_id):
   body = GetMessageBody(service, "me", email_id)
+
   return CleanABody(body)
